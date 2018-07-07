@@ -13,7 +13,7 @@
 
   <div class="form-group">
     <label for="blogBody">Body : </label>
-    <textarea class="form-control" id="blogBody" name="body" ></textarea> 
+    <textarea class="form-control" id="blogBody" name="body"></textarea> 
   </div>
 
   <div class="form-group">
