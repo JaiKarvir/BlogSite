@@ -3,9 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Post;
 
-class PostController extends Controller
+class CommentController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,8 +14,6 @@ class PostController extends Controller
     public function index()
     {
         //
-        $posts = Post::all();
-        return view('posts.index',compact('posts'));
     }
 
     /**
@@ -27,7 +24,6 @@ class PostController extends Controller
     public function create()
     {
         //
-        return view('posts.create');
     }
 
     /**
@@ -39,24 +35,6 @@ class PostController extends Controller
     public function store(Request $request)
     {
         //
-
-        $this->validate(request(),[
-
-           'title' => 'required',
-           'body' => 'required'
-
-       ]);
-         
-          auth()->user()->publish(
-            new Post(request(['title','body']))
-         );
-
-     
-
-          session()->flash('message','Your post has been posted');
-
-          return redirect('/');
-
     }
 
     /**
@@ -67,9 +45,7 @@ class PostController extends Controller
      */
     public function show($id)
     {
-        $post = Post::find($id);
-        return view('posts.show',compact('post'));
-
+        //
     }
 
     /**
