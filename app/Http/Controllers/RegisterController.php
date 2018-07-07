@@ -8,6 +8,12 @@ use App\User;
 
 class RegisterController extends Controller
 {
+
+    public function __construct()
+    {
+       
+        $this->middleware('guest');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -49,6 +55,10 @@ class RegisterController extends Controller
             'email'=>request('email'),
             'password'=>bcrypt(request('password'))
         ]);
+
+        auth()->login($user);
+
+        session()->flash('message','Thank you for signing up');
 
         return redirect()->home();
     }
