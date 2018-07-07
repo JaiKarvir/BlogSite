@@ -3,20 +3,23 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Post;
 
-class PostController extends Controller
+class SessionController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
+
+    public function __construct()
+    {
+        $this->middleware('guest')->except(['destroy']);
+    }
+
     public function index()
     {
         //
-        $posts = Post::all();
-        return view('posts.index',compact('posts'));
     }
 
     /**
@@ -27,7 +30,7 @@ class PostController extends Controller
     public function create()
     {
         //
-        return view('posts.create');
+        return view('sessions.create');
     }
 
     /**
@@ -38,25 +41,22 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        
+        //Attempt to authenticate the user
 
-        $this->validate(request(),[
+        //If not redirect back to login page
+        if(! auth()->attempt(request(['email','password']))){
 
-           'title' => 'required',
-           'body' => 'required'
+            return back()->withErrors([
 
-       ]);
-         
-          auth()->user()->publish(
-            new Post(request(['title','body']))
-         );
+                'message'=>'Please check your credentials and try again'
+            ]);
 
-     
+        }
 
-          session()->flash('message','Your post has been posted');
 
-          return redirect('/');
-
+        //else redirect to hompage
+        return redirect()->home();
     }
 
     /**
@@ -99,8 +99,11 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy()
     {
-        //
+        
+        auth()->logout();
+
+        return redirect()->home();  
     }
 }
