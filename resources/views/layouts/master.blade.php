@@ -35,7 +35,7 @@
     <div class="row">
      @yield('content')
 
-    
+    @include('layouts.sidebar')
      <!-- /.blog-sidebar -->
     </div><!-- /.row -->
 </div><!-- /.container -->

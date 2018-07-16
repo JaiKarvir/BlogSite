@@ -4,8 +4,18 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use App\Post;
+
+use App\Comment;
 class CommentController extends Controller
 {
+
+    public function __construct()
+    {
+       
+        $this->middleware('auth');
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -32,9 +42,18 @@ class CommentController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Post $post)
     {
         //
+
+        $this->validate(request(),[
+            'comment' => 'required|min:2'
+        ]);
+
+        $post->addComment(request('comment'));
+
+        return back();
+
     }
 
     /**
