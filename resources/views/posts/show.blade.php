@@ -3,6 +3,19 @@
 	@section('content')
 	<div class="col-sm-8 blog-main">
 		<h1>{{ $post->title }}</h1>
+
+		@if(count($post->tags))
+		<ul>
+			@foreach($post->tags as $tag)
+			<li>
+				<a href="/posts/tags/{{ $tag->name }}">
+					{{ $tag->name }}
+				</a>
+			</li>
+			@endforeach
+		</ul>
+		@endif
+		
 		<p>{{ $post->body }}</p>
 		
 
@@ -28,10 +41,12 @@
 						<textarea class="form-control" id="comment" name="comment" placeholder="Your comment here" ></textarea> 
 					</div>
 					<div class="form-group">
-						<button type="submit" class="btn btn-primary">Add Comment</button>
+						<button type="submit" class="btn btn-outline-primary">Add Comment</button>
 					</div>
+					@include('layouts.errors')
 				</form>
 			</div>
 		</div>
 	</div>
+
 	@endsection

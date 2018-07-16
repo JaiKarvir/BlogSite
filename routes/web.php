@@ -18,9 +18,11 @@ Route::get('/posts/{post}', 'PostController@show');
 
 Route::post('/posts/{post}/comments', 'CommentController@store');
 
+Route::get('/posts/tags/{tag}', 'TagsController@index');
+
 Route::get('/register','RegisterController@create');
 Route::post('/register','RegisterController@store');
 
-Route::get('/login','SessionController@create');
+Route::get('/login','SessionController@create')->name('login');
 Route::post('/login','SessionController@store');
 Route::get('/logout','SessionController@destroy');
