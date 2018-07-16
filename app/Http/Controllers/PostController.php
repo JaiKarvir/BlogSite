@@ -7,6 +7,12 @@ use App\Post;
 
 class PostController extends Controller
 {
+
+    public function __construct()
+  {
+    $this->middleware('auth')->except(['index','show']);
+  }
+
     /**
      * Display a listing of the resource.
      *
@@ -15,7 +21,15 @@ class PostController extends Controller
     public function index()
     {
         //
-        $posts = Post::all();
+     if (request(['month', 'year'])) {
+      $posts = POST::orderBy('created_at','desc')
+      ->filter(request(['month','year']))
+      ->get();
+    }
+    else{
+      $posts = POST::orderBy('created_at','desc')->get();
+    }
+
         return view('posts.index',compact('posts'));
     }
 

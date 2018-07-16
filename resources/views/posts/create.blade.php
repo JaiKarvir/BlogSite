@@ -17,7 +17,7 @@
   </div>
 
   <div class="form-group">
-  <button type="submit" class="btn btn-primary">Publish</button>
+  <button type="submit" class="btn btn-outline-primary">Publish</button>
   </div>
 
 
