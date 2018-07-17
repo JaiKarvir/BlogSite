@@ -6,8 +6,8 @@
     <li class="nav-item active">
       <a class="nav-link" href="/">Home</a>
     </li>
-    <li class="nav-item">
-      <a class="nav-link" href="#">About us</a>
+    <li class="nav-item active">
+      <a class="nav-link" href="/about">About us</a>
     </li>
 
 @if(!Auth::check())

@@ -29,8 +29,8 @@
       <div class="sidebar-module">
         <h4>Elsewhere</h4>
         <ol class="list-unstyled">
-          <li><a href="#">GitHub</a></li>
-          <li><a href="#">LinkedIn</a></li>
+          <li><a href="https://github.com/JaiKarvir">GitHub</a></li>
+          <li><a href="https://www.linkedin.com/in/jai-chinchankar">LinkedIn</a></li>
           <li><a href="#">Facebook</a></li>
         </ol>
       </div>
