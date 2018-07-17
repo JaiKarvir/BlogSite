@@ -3,7 +3,7 @@
 @section('content')
 
 <div class="col-sm-8 blog-main">
-<p>This is just a sample blogging website to learn the fetures of php laravel 5.4</p><br/>
+<p>This is just a sample blogging website to learn the features of php laravel 5.4</p><br/>
 
 <p>Features of this website are as follows:
 
