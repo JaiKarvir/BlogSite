@@ -23,6 +23,8 @@ Route::get('/posts/tags/{tag}', 'TagsController@index');
 Route::get('/register','RegisterController@create');
 Route::post('/register','RegisterController@store');
 
+Route::get('/about','AboutController@index');
+
 Route::get('/login','SessionController@create')->name('login');
 Route::post('/login','SessionController@store');
 Route::get('/logout','SessionController@destroy');
